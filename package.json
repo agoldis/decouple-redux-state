@@ -8,9 +8,11 @@
   },
   "dependencies": {
     "@babel/core": "^7.0.0-beta.44",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.44",
     "@babel/preset-env": "^7.0.0-beta.44",
     "@babel/preset-react": "^7.0.0-beta.44",
     "babel-loader": "^8.0.0-beta.2",
+    "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-react": "^1.1.7",
@@ -26,7 +28,11 @@
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
+    "reselect": "^3.0.1",
+    "style-loader": "^0.20.3",
     "webpack": "^4.5.0",
     "webpack-serve": "^0.3.1"
   }
