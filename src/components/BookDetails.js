@@ -44,13 +44,8 @@ const BookDetails = ({ book }) => (
   </div>
 );
 
-const mapStateToProps = ({ users, books, comments }, { match }) => {
-  const book = { ...books.find(book => book.isbn === match.params.id) };
-  const readers = users.filter(user => user.books.indexOf(book.isbn) > -1);
-  const bookComments = comments.filter(comment => comment.book === book.isbn);
-  book.readers = [...readers];
-  book.comments = [...bookComments];
-  return { book };
-};
+const mapStateToProps = (state, { match }) => ({
+  book: state.getBookDetails(match.params.id)
+});
 
 export default connect(mapStateToProps)(BookDetails);

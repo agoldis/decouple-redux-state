@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Books = ({ books }) => (
+const Books = ({ books, dispatch }) => (
   <ul>
     {books.map(book => (
       <li key={book.isbn}>
@@ -10,17 +10,21 @@ const Books = ({ books }) => (
           <Link to={`/books/${book.isbn}`}>{book.title}</Link>
         </b>{" "}
         by {book.author}, readers: {book.readersCount}, comments:{" "}
-        {book.commentsCount}
+        {book.commentsCount}{" "}
+        <span
+          onClick={() =>
+            dispatch({
+              type: "REMOVE_BOOK",
+              bookId: book.isbn
+            })
+          }
+        >
+          remove
+        </span>
       </li>
     ))}
   </ul>
 );
 
-const mapStateToProps = ({ books, users, comments }) => ({
-  books: books.map(book => ({
-    ...book,
-    readersCount: users.filter(u => u.books.indexOf(book.isbn) > -1).length,
-    commentsCount: comments.filter(c => c.book === book.isbn).length
-  }))
-});
+const mapStateToProps = ({ booksSummary }) => ({ books: booksSummary });
 export default connect(mapStateToProps)(Books);

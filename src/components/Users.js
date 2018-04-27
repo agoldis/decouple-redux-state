@@ -14,11 +14,6 @@ const Users = ({ users }) => (
   </ul>
 );
 
-const mapStateToProps = ({ users, comments }) => ({
-  users: users.map(user => ({
-    ...user,
-    booksCount: user.books.length,
-    commentsCount: comments.filter(c => c.user === user.id).length
-  }))
-});
+const mapStateToProps = ({ usersSummary }) => ({ users: usersSummary });
+
 export default connect(mapStateToProps)(Users);

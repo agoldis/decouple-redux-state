@@ -1,5 +1,12 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import { initialState } from "./initialState";
+import { reducer } from "./reducer";
+import { enhanceStore } from "./storeEnhancer";
 
-const reducer = (state = initialState, action) => state;
-export const store = createStore(reducer, initialState);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+export const store = createStore(
+  reducer,
+  initialState,
+  composeEnhancers(applyMiddleware(), enhanceStore)
+);
