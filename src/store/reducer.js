@@ -1,6 +1,7 @@
 import { initialState } from "./initialState";
+import { combineReducers } from "redux";
 
-export const reducer = (state = initialState, action) => {
+export const appReducer = (state = initialState, action) => {
   switch (action.type) {
     case "REMOVE_BOOK":
       const bookToDelete = action.bookId;
@@ -10,3 +11,7 @@ export const reducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export const reducer = combineReducers({
+  app: appReducer
+});

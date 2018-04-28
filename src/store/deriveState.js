@@ -10,6 +10,7 @@ const getBookDetails = function(bookId) {
   book.comments = [...bookComments];
   return book;
 };
+
 const getUserDetails = function(userId) {
   const user = { ...this.users.find(u => u.id === userId) };
   const readBooks = this.books.filter(
@@ -62,9 +63,35 @@ const addBookDetails = state => {
   return state;
 };
 
+const moveToApp = state =>
+  Object.defineProperties(state, {
+    users: {
+      get: function() {
+        return this.app.users;
+      },
+      enumerable: false,
+      configurable: true
+    },
+    books: {
+      get: function() {
+        return this.app.books;
+      },
+      enumerable: false,
+      configurable: true
+    },
+    comments: {
+      get: function() {
+        return this.app.comments;
+      },
+      enumerable: false,
+      configurable: true
+    }
+  });
+
 export const deriveState = compose(
   addBooksSummary,
   addUsersSummary,
   addBookDetails,
-  addUserDetails
+  addUserDetails,
+  moveToApp
 );

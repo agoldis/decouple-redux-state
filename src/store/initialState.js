@@ -112,7 +112,9 @@ const comments = [
 ];
 
 export const initialState = {
-  books,
-  users,
-  comments
+  app: {
+    books,
+    users,
+    comments
+  }
 };
