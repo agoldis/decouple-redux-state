@@ -1,10 +1,5 @@
-# `web-project-template`
+# `decouple-redux-state`
 
-This minimal empty project to be used as a starting point for a web app.
+This project demonstrates the techniques used to decouple redux state from components described in article <xxx>
 
-Includes:
-- webpack
-- webpack-serve
-- eslint + prettier + rules
-- babel
-- react
+Use the branches to see the changres as desribed in the blog post
